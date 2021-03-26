@@ -1,0 +1,21 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>News App Demo</title>
+ <link rel="stylesheet" href="/assets/style.css">
+ </head>
+<body>
+
+<h1 class="saveform">Editing {{.Title}}</h1>
+
+<form action="/save/{{.Title}}" method="POST">
+<div class="saveform">
+  <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}
+  </textarea>
+</div>
+<div class="saveform"><input type="submit" value="Save">
+</div>
+</form>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wiki Demo</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  
+  <h1>{{.Title}}</h1>
+
+    <main><header>
+      <a class="logo" href="/">Wiki Demo</a>
+    <a href="/view/AnotherPage" class="button
+      github-button">AnotherPage</a>
+    <a href="/view/Credits" class="button
+      github-button">credits</a>
+
+    </header></main>
+    <div class="text"><h2>{{printf "%s" .Body}}</h2></div>
+
+</body>
+</html>
