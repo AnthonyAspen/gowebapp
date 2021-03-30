@@ -13,3 +13,6 @@ additional changes that I have made:
 Future TODO list is:
 1. to make it possible to upload your own picture to a page what you are creating now
 2. Connect mysql or postgresql to save your pages (and perhaps images)
+
+
+Also mysql-go is a completely different project, what I'm looking forward to make It separated from the repository (because code there is completely different and doesn't have any similarities with the master branch)
