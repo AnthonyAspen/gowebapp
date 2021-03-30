@@ -7,7 +7,8 @@ I haven't used "Make handler" function, and also regexp, to make the program eas
 The main goal is to comprehend the code.
 additional changes that I have made:
 1. New directories for templates and new pages.
-2. Adaptive navbar (The main task is to make it without using JS)
+2. Created a folder for .CSS to create the navbar (and also did set the directory in main.go)
+3. Adaptive navbar (The main task is to make it without using JS)
 
 Future TODO list is:
 1. to make it possible to upload your own picture to a page what you are creating now
