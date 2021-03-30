@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"errors"
 	"strings"
-	"fmt"
 )
 
 type Page struct {
@@ -56,10 +55,6 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	renderTemplate(w, "edit", p)
 }
-type Form struct {
-        Value map[string][]string
-        File  map[string][]*FileHeader
-}
 func saveHandler(w http.ResponseWriter, r *http.Request) {
 	title,err := getTitle(w,r)
 	if err != nil{
@@ -72,13 +67,6 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	var form Form
-	form.File,form.Value,err = r.FormFile("image")
-	if err != nil{
-		fmt.Println(err)
-	}
-	fmt.Println(img)
-	fmt.Println(imgHeader)
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
