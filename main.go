@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"errors"
 	"strings"
+	"fmt"
 )
 
 type Page struct {
@@ -67,9 +68,44 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	uploadFile(w,r,title)
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
+// a function to upload an image from the form with name="image"
+func uploadFile(w http.ResponseWriter, r *http.Request,pageName string){
+
+	// UPLOADING AN IMAGE PROCESS IS HERE
+	// 1. parse input, type multipart/form-data.
+	r.ParseMultipartForm(10 << 20)
+	// 2. retrieve file from posted form-data
+
+	file, _, err := r.FormFile("image")
+	if file == nil {
+		fmt.Println("empty file")
+		return 
+	}
+	if err != nil {
+		log.Fatal(err)
+		return
+	}
+	defer file.Close()
+	// 3. write temporary file on our server
+	tempFile, err := ioutil.TempFile("temp-images",pageName+"-*-.jpe")
+	if err != nil{
+		log.Fatal(err)
+		return
+	}
+	defer tempFile.Close()
+	fileBytes,err := ioutil.ReadAll(file)
+	if err != nil{
+		fmt.Println(err)
+	}
+
+	tempFile.Write(fileBytes)
+	//4 return whether or not this has been succesful
+
+}
 func getTitle(w http.ResponseWriter, r *http.Request) (string, error) {
 
 	  path := r.URL.Path

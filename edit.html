@@ -11,12 +11,12 @@
 
 <h1 class="saveform">Editing {{.Title}}</h1>
 
-<form action="/save/{{.Title}}" method="POST">
+<form action="/save/{{.Title}}" enctype="multipart/form-data" method="POST">
 <div class="saveform">
   <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}
   </textarea>
   <label for="image">Upload your image here </label>
-  <p><input type="file" name="image" multiple accept="image/*,image/jpeg"></div>
+  <p><input type="file" name="image"></div>
 <div class="saveform"><input type="submit" value="Save">
 </div>
 </form>
