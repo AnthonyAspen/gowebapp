@@ -7,8 +7,10 @@
     <title>Wiki</title>
 </head>
 <body>
+  <article>
     <header>
-        <figure class="brand">Wiki</figure>
+        <figure class="brand">WIKI-TEST</figure>
+
         <nav class="menu">
             <input type="checkbox" id="menuToggle">
             <label for="menuToggle" class="menu-icon"><i class="fa fa-bars"></i></label>
@@ -21,9 +23,30 @@
             </ul>
         </nav>
     </header>
-    <h1>{{.Title}}</h1>
-
-    <div class="text"><h2>{{printf "%s" .Body}}</h2></div>
-	<img src="./temp-images/newPage-407974028-.jpe" width="100%" height="auto">
+    <nav>
+      <ul>
+        <li><a href="#first">About the first subject</a></li>
+        <li><a href="#second">Something about the second subject</a></li>
+        ...
+      </ul>
+    </nav>
+    <div>
+      <section id="first">
+        <h2>{{.Title}}</h2>
+        <p>{{printf "%s" .Body}}</p>
+      </section>
+      <section id="second">
+        <h2>Практические занятия</h2>
+        <p>...</p>
+      </section>
+      ...more...
+    </div>
+    <footer>
+      <p><a href="?edit">Edit</a> | <a href="?delete">Delete</a> | <a href="?rename">Rename</a></p>
+    </footer>
+  </article>
+  <footer>
+    <p><small>© 2021 Wiki-polucyaetsya</small></p>
+  </footer>
 </body>
 </html>
