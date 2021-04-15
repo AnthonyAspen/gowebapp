@@ -9,9 +9,9 @@ additional changes that I have made:
 1. New directories for templates and new pages.
 2. Created a folder for .CSS to create the navbar (and also did set the directory in main.go)
 3. Adaptive navbar (The main task is to make it without using JS)
+4. you can upload a picture on the page 
 
 Future TODO list is:
-1. to make it possible to upload your own picture to a page what you are creating now
 2. Connect mysql or postgresql to save your pages (and perhaps images)
 
 
