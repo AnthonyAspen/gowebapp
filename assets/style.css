@@ -19,6 +19,9 @@ header {
     font-family: sans-serif;
     background-color: #f1c40f;
 }
+img{
+     position: absolute;
+}
 .brand {
     width: auto;
     height: 100%;
@@ -95,4 +98,5 @@ header {
         font-size: 1.7em;
     }
 }
+
 
