@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
  <head>
  <meta charset="UTF-8">
@@ -15,8 +15,9 @@
 <div class="saveform">
   <textarea name="body" rows="20" cols="80">{{printf "%s" .Body}}
   </textarea>
-  <label for="image">Upload your image here </label>
-  <p><input type="file" name="image"></div>
-<div class="saveform"><input type="submit" value="Save">
+  <label for="image-text"><h2>Upload your image here</h2> </label>
+  <div><input class="custom-file-input"type="file" name="image"></div>
+<div class="saveform"><input class="button" type="submit" value="Save">
 </div>
 </form>
+

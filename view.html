@@ -1,7 +1,8 @@
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/style.css">
     <title>Wiki</title>
@@ -9,7 +10,7 @@
 <body>
   <article>
     <header>
-        <figure class="brand">WIKI-TEST</figure>
+      <figure class="brand">SITE</figure>
 
         <nav class="menu">
             <input type="checkbox" id="menuToggle">
@@ -37,17 +38,18 @@
       </section>
       <section id="second">
         <h2>Images</h2>
-        <img src={{.ImagePath}} width="60%" height="auto">
-        
+        <img src={{.ImagePath}} width="60%" height="auto"> 
+       <!-- <img id="images"src="https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg">  -->
       </section>
       ...more...
     </div>
     <footer>
-      <p><a href="?edit">Edit</a> | <a href="?delete">Delete</a> | <a href="?rename">Rename</a></p>
+      <p><a href="/edit/{{.Title}}" >Edit</a> | <a href="?delete">Delete</a> | <a href="?rename">Rename</a></p>
     </footer>
   </article>
-  <footer>
+<footer>
     <p><small>© 2021 Wiki-polucyaetsya</small></p>
   </footer>
 </body>
 </html>
+
