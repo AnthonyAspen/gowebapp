@@ -1,55 +1,178 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/style.css">
-    <title>Wiki</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blog - Tailsaw </title>
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/bulma-divider.min.css">
+
+  <style>
+    nav.navbar {
+      height: 6rem !important;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06) !important;
+    }
+  </style>
 </head>
+
 <body>
-  <article>
-    <header>
-      <figure class="brand">SITE</figure>
 
-        <nav class="menu">
-            <input type="checkbox" id="menuToggle">
-            <label for="menuToggle" class="menu-icon"><i class="fa fa-bars"></i></label>
-            <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Something</li></a>
-                <a href="#"><li>Something</li></a>
-                <a href="#"><li>Something</li></a>
-                <a href="#"><li>Something</li></a>
-            </ul>
-        </nav>
-    </header>
-    <nav>
-      <ul>
-        <li><a href="#first">About the first subject</a></li>
-        <li><a href="#second">Something about the second subject</a></li>
-        ...
-      </ul>
-    </nav>
-    <div>
-      <section id="first">
-        <h2>{{.Title}}</h2>
-        <p>{{printf "%s" .Body}}</p>
-      </section>
-      <section id="second">
-        <h2>Images</h2>
-        <img src={{.ImagePath}} width="60%" height="auto"> 
-       <!-- <img id="images"src="https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg">  -->
-      </section>
-      ...more...
+  <!-- START NAV -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="../view/home">
+          <img src="../images/bulma.png" alt="Logo">
+        </a>
+        <span class="navbar-burger burger" data-target="navbarMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <div class=" navbar-item">
+            <div class="control has-icons-left">
+              <input class="input is-rounded" type="email" placeholder="Search">
+              <span class="icon is-left">
+                <i class="fa fa-search"></i>
+              </span>
+            </div>
+          </div>
+          <a class="navbar-item is-active is-size-5 has-text-weight-semibold">
+            Home
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold">
+            Examples
+          </a>
+          <a class="navbar-item is-size-5 has-text-weight-semibold">
+            Features
+          </a>
+        </div>
+      </div>
     </div>
-    <footer>
-      <p><a href="/edit/{{.Title}}" >Edit</a> | <a href="?delete">Delete</a> | <a href="?rename">Rename</a></p>
-    </footer>
-  </article>
-<footer>
-    <p><small>© 2021 Wiki-polucyaetsya</small></p>
-  </footer>
-</body>
-</html>
+  </nav>
+  <!-- END NAV -->
 
+  
+
+  <!-- Articles -->
+
+
+    {{ if eq (printf "%T" .) "[]string" }}
+
+    <div class="section has-text-centered">
+                                <div class="media-content">
+                                  <p class="title is-4">Create new Page</p>
+                                </div>
+                                <div>
+    <div class="section has-text-centered">
+  <form action="/edit/" method="POST">
+    <input type="text" id="page" name="page" value="page" class="input is-rounded is-medium "><br>
+    <input type="submit" value="Create" class="button is-rounded is-large">
+  </form>
+    </div>
+
+
+        {{ range . }}
+<div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-5by4">
+                              <img src="/assets/{{.}}.jpg" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                  <p class="title is-4">{{.}}</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                              <a href="/view/{{.}}">view</a>
+                              <a href="/edit/{{.}}">edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {{ end }}
+
+
+        {{else}}
+       <div class="hero-body">
+    <div class="container has-text-centered">
+      <p class="title has-text-centered">
+      {{.Title}}
+      </p>
+      <p class="subtitle">
+      {{printf "%s" .Body}}
+      </p>
+<figure class="image is-1by1">
+  <img class="is-rounded" src="{{.ImagePath}}">
+</figure>
+                            <div class="content">
+                              <a href="/view/{{.}}">view</a>
+                              <a href="/edit/{{.}}">edit</a>
+                              <a href="/delete/{{.}}">edit</a>
+                            </div>
+    </div>
+  </div> 
+
+        <div class="is-divider"></div>
+
+      
+
+    {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>My site</strong>
+
+         
+      </p>
+    </div>
+  </footer>
+
+  <script>
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(el => {
+          el.adEventListener('click', () => {
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    });
+        
+  </script>
+
+</body>
+
+</html>
